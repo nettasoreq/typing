@@ -8,7 +8,7 @@ var loadedGoogleCount = 0;
 var gFontsUpdateCacheList = [];
 var tFontsUpdateCacheList = [];
 lib.ssMetadata = [
-		{name:"typinggame_atlas_1", frames: [[0,445,2044,288],[0,735,617,263],[1842,0,145,157],[0,0,1840,443],[1842,159,91,54],[619,735,375,388]]}
+		{name:"typinggame_atlas_1", frames: [[0,445,2044,288],[0,735,617,263],[1842,0,145,157],[1842,159,48,158],[0,0,1840,443],[1842,319,91,54],[619,735,375,388]]}
 ];
 
 
@@ -109,23 +109,30 @@ lib.tfontAvailable = function(family, totalTypekitCount) {
 
 
 
-(lib.CachedBmp_4 = function() {
+(lib.CachedBmp_8 = function() {
 	this.initialize(ss["typinggame_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_3 = function() {
+(lib.CachedBmp_4 = function() {
 	this.initialize(ss["typinggame_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_2 = function() {
+(lib.CachedBmp_3 = function() {
 	this.initialize(ss["typinggame_atlas_1"]);
 	this.gotoAndStop(5);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.CachedBmp_2 = function() {
+	this.initialize(ss["typinggame_atlas_1"]);
+	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -189,7 +196,7 @@ if (reversed == null) { reversed = false; }
 	this.myhigescore.lineHeight = 80;
 	this.myhigescore.lineWidth = 288;
 	this.myhigescore.parent = this;
-	this.myhigescore.setTransform(143.5,57.25);
+	this.myhigescore.setTransform(171.9988,57.25,1.1983,1);
 	if(!lib.properties.webfonts['Alef']) {
 		lib.webFontTxtInst['Alef'] = lib.webFontTxtInst['Alef'] || [];
 		lib.webFontTxtInst['Alef'].push(this.myhigescore);
@@ -201,7 +208,7 @@ if (reversed == null) { reversed = false; }
 	this.myscore.lineHeight = 80;
 	this.myscore.lineWidth = 288;
 	this.myscore.parent = this;
-	this.myscore.setTransform(144.5,-29.4);
+	this.myscore.setTransform(172.9988,-29.4,1.1983,1);
 	if(!lib.properties.webfonts['Alef']) {
 		lib.webFontTxtInst['Alef'] = lib.webFontTxtInst['Alef'] || [];
 		lib.webFontTxtInst['Alef'].push(this.myscore);
@@ -532,13 +539,16 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.CachedBmp_5();
-	this.instance.setTransform(-36.3,-39.2,0.5,0.5);
+	this.instance.setTransform(-36.35,-39.2,0.5,0.5);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.instance_1 = new lib.CachedBmp_8();
+	this.instance_1.setTransform(-4.5,-40.45,0.5,0.5);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.m, new cjs.Rectangle(-36.3,-39.2,72.5,78.5), null);
+}).prototype = getMCSymbolPrototype(lib.m, new cjs.Rectangle(-36.3,-40.4,72.5,79.69999999999999), null);
 
 
 (lib._222 = function(mode,startPosition,loop,reversed) {
@@ -2437,7 +2447,7 @@ if (reversed == null) { reversed = false; }
 		var meteor;
 		var letter = 0;
 		var spaceship;
-		var speed = 4;
+		var speed = 6;
 		var boom;
 		var meteorgo;
 		var shoot = false;
@@ -2626,7 +2636,7 @@ if (reversed == null) { reversed = false; }
 		
 		function start() {
 			letter = 0;
-			speed = 4;
+			speed = 6;
 			shoot = false;
 			level = 1;
 			score = 0;
@@ -2743,7 +2753,7 @@ if (reversed == null) { reversed = false; }
 		}
 		function again(evant) {
 			mytime++;
-			if (mytime % 30 == 0) {
+			if (mytime % 10 == 0) {
 				level += 1;
 				speed += 1;
 			}
@@ -2805,11 +2815,11 @@ lib.properties = {
 	opacity: 1.00,
 	webfonts: {},
 	manifest: [
-		{src:"images/CachedBmp_1.png?1618377776947", id:"CachedBmp_1"},
-		{src:"images/typinggame_atlas_1.png?1618377776760", id:"typinggame_atlas_1"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1618377776947", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1618377776947", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/combobox.js?1618377776947", id:"an.ComboBox"}
+		{src:"images/CachedBmp_1.png?1618400427340", id:"CachedBmp_1"},
+		{src:"images/typinggame_atlas_1.png?1618400427149", id:"typinggame_atlas_1"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1618400427340", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1618400427340", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/combobox.js?1618400427340", id:"an.ComboBox"}
 	],
 	preloads: []
 };

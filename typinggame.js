@@ -3095,7 +3095,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-237.3,-71.5,391.6,142.2);
+p.nominalBounds = new cjs.Rectangle(-237.3,-71.5,391.6,142.1);
 
 
 (lib.lives = function(mode,startPosition,loop,reversed) {
@@ -4392,7 +4392,7 @@ if (reversed == null) { reversed = false; }
 			bg.alpha = 0.3;
 			stage.addChildAt(bg, 0);
 		
-			
+		
 		
 			letter = 0;
 			speed = 4;
@@ -4458,19 +4458,21 @@ if (reversed == null) { reversed = false; }
 		
 		}
 		function question() {
+		
 			if (trys == 3) {
 				end();
 			} else {
 				keyboard["key" + game[letter][1]].gotoAndStop(0);
 				scoreboard.scoreb.text = score;
 				scoreboard.scorel.text = level;
-				meteorgo = true;
-				
+		
+		
 				var newl = Math.floor((Math.random() * (game.length)));
 				while (game[newl][2] >= level && newl != letter) {
 					newl = Math.floor((Math.random() * (game.length)));
 				}
-				letter=newl;
+				letter = newl;
+				meteorgo = true;
 				meteor = new lib.m();
 				meteor.x = 1280;
 				meteor.y = 200;
@@ -4486,26 +4488,28 @@ if (reversed == null) { reversed = false; }
 		
 		window.addEventListener("keydown", check);
 		function check(evt) {
-			if (shoot == false) {
-				if (evt.keyCode == game[letter][1]) {
-					var yes = createjs.Sound.play("yes");
-					yes.volume = 0.8
+			if (meteorgo == true) {
+				if (shoot == false) {
+					if (evt.keyCode == game[letter][1]) {
+						var yes = createjs.Sound.play("yes");
+						yes.volume = 0.8
 		
-					keyboard["key" + game[letter][1]].gotoAndStop(2);
-					fire = new lib.fire();
-					fire.x = 360;
-					fire.y = 200;
-					stage.addChild(fire)
-					shoot = true;
-					count++;
-					if (count % 10 == 0) {
-						level += 1;
-						speed += 1;
+						keyboard["key" + game[letter][1]].gotoAndStop(2);
+						fire = new lib.fire();
+						fire.x = 360;
+						fire.y = 200;
+						stage.addChild(fire)
+						shoot = true;
+						count++;
+						if (count % 10 == 0) {
+							level += 1;
+							speed += 1;
+						}
+		
+					} else {
+						var no = createjs.Sound.play("no");
+						keyboard["key" + game[letter][1]].gotoAndStop(1);
 					}
-		
-				} else {
-					var no = createjs.Sound.play("no");
-					keyboard["key" + game[letter][1]].gotoAndStop(1);
 				}
 			}
 		}
@@ -4514,12 +4518,12 @@ if (reversed == null) { reversed = false; }
 			boom.x = meteor.x;
 			boom.y = meteor.y;
 			boom.scale = 0.2;
+			meteorgo = false;
 		
 			stage.addChildAt(boom, stage.numChildren);
 			createjs.Tween.get(boom).to({
 				scale: 1
-			}, 300).call(more);
-			meteorgo = false;
+			}, 300).wait(100).call(more);
 			var musicboom = createjs.Sound.play("boom");
 			//musicboom.volume = 1;
 		}
@@ -4536,9 +4540,8 @@ if (reversed == null) { reversed = false; }
 						explod();
 					}
 				}
-				if (intersect(spaceship, meteor)) {
+				else if (intersect(spaceship, meteor)) {
 					spaceship.gotoAndPlay(1);
-					stage.removeChild(meteor);
 					trys++;
 					var heart = lives["live" + trys];
 					createjs.Tween.get(heart).to({
@@ -4551,8 +4554,11 @@ if (reversed == null) { reversed = false; }
 			}
 		}
 		function more() {
+			boom.alpha = 0;
 			stage.removeChild(boom);
+			stage.removeChild(fire);
 			stage.removeChild(meteor);
+		
 			question();
 		}
 		
@@ -4589,7 +4595,7 @@ if (reversed == null) { reversed = false; }
 		}
 		
 		
-		function startnewgame(){
+		function startnewgame() {
 			music.stop();
 			mystart();
 		}
